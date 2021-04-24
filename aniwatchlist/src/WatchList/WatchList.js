@@ -1,17 +1,22 @@
 import React from 'react'
-
+import{ useState, useEffect} from 'react';
+import Header from './../components/Header';
+import Fetch from './Fetch';
 function WatchList() {
-  for (var i=0; i< localStorage.length; i++) {
-    console.log(localStorage.getItem(localStorage.key(i)));
-  }
-  
-  
+
+ 
+
+
+
   return (
     <div>
-      <h1>WatchList</h1>
-    </div>
-  )
-}
+  <Header />
+  <Fetch />
 
+    </div>
+     
+  )
+ 
+  }
 export default WatchList
 

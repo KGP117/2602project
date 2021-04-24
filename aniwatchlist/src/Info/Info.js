@@ -10,10 +10,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Icon from '@material-ui/core/Icon';
+
 import SaveIcon from '@material-ui/icons/Save';
 import history from './../history';
-import AddTo from './../components/AddTo';
+
 
 
 
@@ -43,15 +43,17 @@ const useStyles = makeStyles({
   });
 const classes = useStyles();
 
-const [watched, setWatched]=useState([]);
-const saveToLocalStorage=(items)=>{
-    localStorage.setItem('watched',JSON.stringify(items));
-};
-const addToWatched=(show)=>{
-    const newWatchList=[...watched,show];
-    setWatched(newWatchList);
-    saveToLocalStorage(newWatchList);
-};
+const checkAdd= (show)=>{
+  for (var i=0; i< localStorage.length; i++) {
+    if(localStorage.getItem(localStorage.key(i)==show)){
+        alert("Show already in list!");
+    }
+    else{
+      localStorage.setItem(show,show);
+
+    }
+}
+}
 //for (var key in localStorage) {
   //console.log(key + ':' + localStorage[key]);
 //}
@@ -79,7 +81,7 @@ const addToWatched=(show)=>{
           height="800"
           image={details.image_url}
           title={details.title}
-          alignItems="center"
+
         />
         
         <CardContent>
@@ -98,10 +100,10 @@ const addToWatched=(show)=>{
       <CardActions>
       <Button
         variant="contained"
-        color="grey"
         size="large"
         startIcon={<SaveIcon />}
-        onClick={()=>addToWatched(details.mal_id)}
+        onClick={()=> checkAdd(details.mal_id)}
+        
       >
         Save
       </Button>
